@@ -25,4 +25,6 @@ func main() {
 
 	fileName := createFileName()
 	createFile(fileName)
+
+	startServer()
 }
