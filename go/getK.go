@@ -50,3 +50,12 @@ func getKrakenAssets() *KAssets {
 
 	return &result
 }
+
+func getKrakenAssetPairs() *KAssetPairs {
+	body := getPublicContent("AssetPairs")
+
+	var result KAssetPairs
+	json.Unmarshal(body, &result)
+
+	return &result
+}

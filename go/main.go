@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 )
 
@@ -10,33 +9,6 @@ const (
 	public_path = "0/public/"
 	public_url  = main_url + public_path
 )
-
-type Asset struct {
-	Aclass          string      `json:"aclass"`
-	Altname         string      `json:"altname"`
-	Decimals        int         `json:"decimals"`
-	DisplayDecimals int         `json:"display_decimals"`
-	CollateralValue json.Number `json:"collateral_value"`
-	Status          string      `json:"status"`
-}
-
-type KAssets struct {
-	Result map[string]Asset `json:"result"`
-}
-
-type KTime struct {
-	Result struct {
-		Unixtime uint   `json:"unixtime"`
-		Rfc1123  string `json:"rfc1123"`
-	} `json:"result"`
-}
-
-type KStatus struct {
-	Result struct {
-		Status    string `json:"status"`
-		Timestamp string `json:"timestamp"`
-	} `json:"result"`
-}
 
 func main() {
 	kstatus := getKrakenStatus()
@@ -47,4 +19,7 @@ func main() {
 	fmt.Println("")
 	kassets := getKrakenAssets()
 	fmt.Println(kassets.Result)
+
+	kassetPairs := getKrakenAssetPairs()
+	fmt.Println(kassetPairs.Result)
 }
