@@ -22,4 +22,7 @@ func main() {
 
 	kassetPairs := getKrakenAssetPairs()
 	fmt.Println(kassetPairs.Result)
+
+	fileName := createFileName()
+	createFile(fileName)
 }
